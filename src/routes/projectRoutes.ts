@@ -62,5 +62,18 @@ router.get('/:projectId/tasks/:TaskId',
     handleInputErrors,
     TaskController.getTaskById
 )
+router.put('/:projectId/tasks/:TaskId',
+    body('name')
+    .notEmpty().withMessage('El nombre de la tarea es obligatorio'),
+    body('description')
+    .notEmpty().withMessage('La descripcion de la tarea es obligatoria'),
+    handleInputErrors,
+    TaskController.updateTask
+)
+router.delete('/:projectId/tasks/:TaskId',
+    param('TaskId').isMongoId().withMessage('ID no valido'),
+    handleInputErrors,
+    TaskController.deleteTask
+)
 
 export default router
