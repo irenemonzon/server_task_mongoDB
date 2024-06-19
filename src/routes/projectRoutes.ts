@@ -4,7 +4,7 @@ import { ProjectController } from "../controllers/ProjectController";
 import { handleInputErrors } from "../middleware/validation";
 import { TaskController } from "../controllers/TaskController";
 import {projectExists } from "../middleware/project";
-import { taskExists } from "../middleware/task";
+import { taskBelongToProject, taskExists } from "../middleware/task";
 
 const router=Router()
 
@@ -60,6 +60,7 @@ router.get('/:projectId/tasks',
 )
 
 router.param('TaskId', taskExists)
+router.param('TaskId',taskBelongToProject )
 
 router.get('/:projectId/tasks/:TaskId',
     param('TaskId').isMongoId().withMessage('ID no valido'),
