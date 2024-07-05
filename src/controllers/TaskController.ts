@@ -37,7 +37,7 @@ export class TaskController {
     static updateTask= async(req:Request,res:Response)=>{
         try{
             req.task.name=req.body.name
-            req.task.description= req.body.descripcion
+            req.task.description= req.body.description
             await req.task.save()
             res.send('Tarea actualizada correctamente')
 
