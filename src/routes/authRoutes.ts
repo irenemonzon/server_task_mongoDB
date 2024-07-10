@@ -29,6 +29,15 @@ router.post('/confirm-account',
         AuthController.confirmAccount
 
 )
+router.post('/login',
+    body('email')
+    .isEmail().withMessage('E-mail no valido'),
+    body('password')
+    .isLength({min:8}).withMessage('password es muy corto,minimo 8 caracteres'),
+    handleInputErrors,
+    AuthController.login
+
+)
 
 
 export default router;
