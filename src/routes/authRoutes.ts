@@ -43,7 +43,12 @@ router.post('/request-code',
     .isEmail().withMessage('E-mail no valido'),
     handleInputErrors,
     AuthController.requestConfimationCode
-
+)
+router.post('/forgot-password',
+    body('email')
+    .isEmail().withMessage('E-mail no valido'),
+    handleInputErrors,
+    AuthController.forgotPassword
 )
 
 
