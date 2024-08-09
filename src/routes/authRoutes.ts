@@ -98,6 +98,14 @@ router.post('/update-password',
     handleInputErrors,
     AuthController.updateCurrentUserPassword
 )
+router.post('/check-password',
+    authenticate,
+    body('password')
+    .isLength({min:8}).withMessage('El password no puede ir vacio'),
+    handleInputErrors,
+    AuthController.checkPassword
+
+)
 
 
 
