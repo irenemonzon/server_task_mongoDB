@@ -1,5 +1,5 @@
 import mongoose,{Schema,Document,PopulatedDoc, Types} from "mongoose";
-import { ITask } from "./Task";
+import Task, { ITask } from "./Task";
 import { IUser } from "./User";
 
 //typescript
@@ -50,6 +50,13 @@ const ProjectSchema:Schema= new Schema({
     ],
 
 },{timestamps:true})
+
+ProjectSchema.pre('deleteOne',{document:true},async function(){
+    const projectId=this._id
+    if(!projectId)return
+    await Task.deleteMany({project:projectId})
+})
+
 
 const Project = mongoose.model<IProject>('Project',ProjectSchema)
 export default Project
