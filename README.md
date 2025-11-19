@@ -94,7 +94,7 @@ PORT=4000
 # Database Configuration
 DATABASE_URL=mongodb://localhost:27017/uptask
 # Or for MongoDB Atlas:
-# DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/uptask
+# DATABASE_URL=
 
 # JWT Configuration
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
